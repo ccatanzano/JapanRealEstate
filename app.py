@@ -5,7 +5,6 @@ import numpy as np
 from difflib import SequenceMatcher
 from sklearn.linear_model import Ridge
 import pickle
-import time
 import seaborn as sns
 import locale
 from fake_useragent import UserAgent
