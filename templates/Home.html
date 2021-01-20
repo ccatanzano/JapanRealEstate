@@ -1,0 +1,29 @@
+{% extends "Base.html" %}
+{% block content %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="/Home"><b>Home</b></a>
+                <a class="nav-item nav-link" href="/Buy_house_prediction">Should I buy that house?</a>
+                <a class="nav-item nav-link" href="/Sell_house_prediction">How much is my house worth?</a>
+                <a class="nav-item nav-link" href="/About">About</a>
+                
+            </div>
+        </div>
+    </nav> 
+    <header><h2 align=center>Predict house selling price</h2></header>
+    <br>
+    <br>
+    <header><h5><u>1.For prospective buyers</u></h5></header>
+    <p> <i>Are you sure the property you are looking at is worth at least the market price?</i><br>
+        <i>What criteria should you compromise on if you wanted to buy at a cheaper price in the same municipality?</i><br>
+        Get answers to those questions by telling us what property you are looking to buy.</p>
+    <a href="/Buy_house_prediction" class="btn btn-info mt-2" role="button">Get results</a><br>
+    <br>
+    <br>
+    <header><h5><u>2.For prospective sellers </u></h5></header>
+    <p><i>How much is your house worth? Is the price proposed by your prospective buyers really worth settling for?</i><br>
+        Get answers to those questions by telling us about the property you want to sell.</p>
+    <a href="/Sell_house_prediction" class="btn btn-info mt-2" role="button">Get results</a>        
+
+{% endblock %}

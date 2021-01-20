@@ -1,0 +1,96 @@
+{% extends 'Base.html' %}
+
+{% block content %}
+     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="/home">Home</a>
+                <a class="nav-item nav-link" href="/Buy_house_prediction"><b>Should I buy that house?</b></a>
+                <a class="nav-item nav-link" href="/Sell_house_prediction">How much is my house worth?</a>
+                <a class="nav-item nav-link" href="/About">About</a>
+                
+            </div>
+        </div>
+    </nav> 
+    <header><h2 align=center>Should I buy that house?</h2></header>
+    {% if Pattern==0 %}
+        <header><h4 align=center> Option 1: Sumo link insert </h4> </header>
+        <br>
+        <section>
+            <p>Is the property you are looking to buy listed in Sumo?<br>
+               If yes, just insert the property link<br>
+               Ex: <a href="https://suumo.jp/ikkodate/niigata/sc_niigatashikita/nc_95364198/">https://suumo.jp/ikkodate/niigata/sc_niigatashikita/nc_95364198/</a></p>
+        </section>
+        <section class="create-item-form">
+            <form method='post' enctype="multipart/form-data">
+                <div class='form-group'>
+                    <label for="Sumo_link"><u>Upload Sumo link</u></label>
+                    <input type='text' class='form-control-file' id="Sumo_link" name="Sumo_link"/>
+                </div>
+                <button type="submit" class='btn btn-primary mt-2'>Get your prediction</button>
+            </form>
+        </section>
+        <br>
+        <header><h4 align=center> Option 2: Manual insert </h4> </header>
+        <br>
+        <p> If the property you are looking to buy is not listed in Sumo, insert below the property information </p>
+        <br>
+        <header><h4 align=center> 開発中: Section in construction </h4> </header>
+    {% else %}        
+        {{ super() }}
+    {% endif %}}     
+    {% if Pattern==1 %}
+        <header><h6 align=center> {{Link}} </h6> </header>
+        <br>
+        <header><h3 align=center> <u> Selling price prediction </u> </h3> </header>
+        <div class="center">
+            <p> {{Message}} </p>
+            <img src={{Prediction_graph}} alt='Prediction' width="700" height="400" align=center>
+            {% if Prediction_warning!=0 %}
+                <p><i> {{Prediction_warning}}</i> </p>
+            {% else %}        
+                {{ super() }}
+            {% endif %}
+            <br>
+            <p>Confidence index: <b>{{Confidence_index}}</b><br>
+               (*Indicates how good the model has been in training phase. A is highest and D the lowest grade)</p>
+        </div>
+        <br>
+        <header><h3 align=center> <u> Historical transaction data </u> </h3> </header>
+        <div class='center'>
+            <p> Prediction models sometimes have their limitation.<br>
+                Look for yourself the past transactions with actual sales transaction that resemble most the property you are looking for to further your understanding on market price.<br>
+                <i> *<span style="color:red">■</span>= Exact match or very similar to the property you are looking for<br>
+                    *<span style="color:orange">■</span>= Fairly similar to the property you are lookign for </i></p>
+            {% autoescape off %}
+            {{Hist_data_graph1}}
+            <br>
+            {{Hist_data_graph2}}
+            {% endautoescape %}
+            <br>
+        </div>
+        <header><h3 align=center> <u> Understand what drives the price </u> </h3> </header> 
+        <br>
+        <div class='center'>
+            <p>You still want to buy at a cheaper price? What if the property you are looking to buy had a slight characteristic change? <br>
+                Look at how some features would impact the selling price to figure out where to compromise on if you were looking to buy cheaper.<br>
+                <i>*Disclaimer: The below <b>only</b> highlights some general trends that the model has picked up and should be taken as face value.</i> </p>
+            {% autoescape off %}
+            {{Ev_summary_graph}}
+            {% endautoescape %}
+            <br>
+            {% for i in range(Graphs|length) %}
+                <img src={{Graphs[i]}} alt='Prediction' width="700" height="400" align=center>
+                <br>
+                <br>
+                <br>
+            {% endfor %}
+        </div>
+        <br>
+        <a href="/Buy_house_prediction" class="btn btn-info mt-2" role="button">Get another prediction</a>
+            
+    {% else %}        
+        {{ super() }}
+    {% endif %}}
+         
+{% endblock %}

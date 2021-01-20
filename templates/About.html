@@ -1,0 +1,26 @@
+{% extends "Base.html" %}
+{% block content %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="/Home">Home</a>
+                <a class="nav-item nav-link" href="/Buy_house_prediction">Should I buy that house?</a>
+                <a class="nav-item nav-link" href="/Sell_house_prediction">How much is my house worth?</a>
+                <a class="nav-item nav-link" href="/About"><b>About</b></a>
+                
+            </div>
+        </div>
+    </nav> 
+    <header><h2 align=center> <u> About this application </u></h2></header>
+    <br>
+    <br>
+    <p> This application has been developped as part of a graduation project done at the Data Incubator, a bootcamp for data scientist.
+        <br>
+        <br>
+        The models developped for the application are using the open data on real estate sales transaction managed by the Ministry of Land, Infrastructure, Transport and Tourism of Japan. <a href='https://www.land.mlit.go.jp/webland/servlet/MainServlet'> Link </a> 
+        <br>
+        <br>
+        Owner of the application is Christophe Catanzano. For any inquiries please get in touch by email 'catanzchris@gmail.com'</p>
+      
+
+{% endblock %}
