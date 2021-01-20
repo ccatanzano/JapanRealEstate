@@ -15,7 +15,7 @@ from flask import Flask, render_template, request, redirect
 import io
 import base64
 
-locale.setlocale(locale.LC_ALL, 'en_US')
+locale.setlocale(locale.LC_ALL)
 application = Flask(__name__, template_folder='templates')
 
 #Common file for translation
